@@ -51,7 +51,9 @@ export const ctx = new Elysia({
           const now = performance.now();
           console.log("Syncing database...");
           void client.sync().then(() => {
-            console.log(`Database synced in ${performance.now() - now}ms`);
+            console.log(
+              `Database synced in ${performance.now() - now}ms`,
+            );
           });
         },
       })
@@ -72,7 +74,7 @@ export const ctx = new Elysia({
       log.debug(`Request received: ${request.method}: ${request.url}`);
     }
   })
-  .onResponse(({ log, request, set }) => {
+  .onResponse(({ log, request }) => {
     if (log && config.env.NODE_ENV === "production") {
       log.debug(`Response sent: ${request.method}: ${request.url}`);
     }

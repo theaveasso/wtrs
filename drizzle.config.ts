@@ -1,6 +1,5 @@
-import type { Config } from "drizzle-kit";
+import { type Config } from "drizzle-kit";
 import { config } from "./src/config";
-
 
 const dbCredentials = {
   url: config.env.DATABASE_URL,
@@ -8,7 +7,7 @@ const dbCredentials = {
 };
 
 export default {
-  schema: "./src/db/schema/index.ts",
+  schema: "./src/db/primary/schema/index.ts",
   driver: "turso",
   dbCredentials,
   verbose: true,

@@ -2,7 +2,7 @@ import { staticPlugin } from "@elysiajs/static";
 // import { swagger } from "@elysiajs/swagger";
 import { Elysia } from "elysia";
 import { config } from "./config";
-import { ctx } from "./context";
+// import { ctx } from "./context";
 import { api } from "./controllers/*";
 import { pages } from "./pages/*";
 
@@ -20,7 +20,7 @@ const app = new Elysia()
     }
   })
   .onError(({ code, error, request, log }) => {
-    // log.error(` ${request.method} ${request.url}`, code, error);
+    log.error(` ${request.method} ${request.url}`, code, error);
     console.error(error);
   })
   .listen(3000);
