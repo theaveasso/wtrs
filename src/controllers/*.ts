@@ -1,9 +1,6 @@
-import Elysia from "elysia";
-import { authController } from "./auth";
-import { tweetsController } from "./tweets";
+import * as ElysiaModule from "elysia";
+import * as AuthModule from "./auth";
 
-export const api = new Elysia({
+export const api = new ElysiaModule.default({
   prefix: "/api",
-})
-  .use(authController)
-  .use(tweetsController);
+}).use(AuthModule.authController);

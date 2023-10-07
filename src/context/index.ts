@@ -16,9 +16,9 @@ const stream = pretty({
 const loggerConfig =
   config.env.NODE_ENV === "development"
     ? {
-        level: config.env.LOG_LEVEL,
-        stream,
-      }
+      level: config.env.LOG_LEVEL,
+      stream,
+    }
     : { level: config.env.LOG_LEVEL };
 
 export const ctx = new Elysia({
@@ -27,6 +27,12 @@ export const ctx = new Elysia({
   .decorate("db", db)
   .decorate("config", config)
   .decorate("auth", auth)
+  .derive(async (ctx) => {
+    const authRequest = ctx.auth.handleRequest(ctx);
+    const session = await authRequest.validate();
+
+    return { session };
+  })
   .use(bethStack())
   .use(logger(loggerConfig))
   .use(
@@ -39,16 +45,16 @@ export const ctx = new Elysia({
     // @ts-expect-error
     config.env.DATABASE_CONNECTION_TYPE === "local-replica"
       ? cron({
-          name: "heartbeat",
-          pattern: "*/2 * * * * *",
-          run() {
-            const now = performance.now();
-            console.log("Syncing database...");
-            void client.sync().then(() => {
-              console.log(`Database synced in ${performance.now() - now}ms`);
-            });
-          },
-        })
+        name: "heartbeat",
+        pattern: "*/2 * * * * *",
+        run() {
+          const now = performance.now();
+          console.log("Syncing database...");
+          void client.sync().then(() => {
+            console.log(`Database synced in ${performance.now() - now}ms`);
+          });
+        },
+      })
       : (a) => a,
   )
   .onStart(({ log }) => {

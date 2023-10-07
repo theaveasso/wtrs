@@ -1,12 +1,14 @@
 import { blob, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const user = sqliteTable("user", {
+export const user = sqliteTable("users", {
   id: text("id").primaryKey(),
-  handle: text("handle").notNull(),
-  // other user attributes
+  name: text("name").notNull(),
+  email: text("email"),
+  picture: text("picture").notNull(),
+  teamId: text("team_id"),
 });
 
-export const session = sqliteTable("user_session", {
+export const session = sqliteTable("users_session", {
   id: text("id").primaryKey(),
   userId: text("user_id")
     .notNull()
@@ -19,7 +21,7 @@ export const session = sqliteTable("user_session", {
   }).notNull(),
 });
 
-export const key = sqliteTable("user_key", {
+export const key = sqliteTable("users_key", {
   id: text("id").primaryKey(),
   userId: text("user_id")
     .notNull()
