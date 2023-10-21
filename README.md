@@ -1,25 +1,15 @@
-# This project was created using `create-beth-app`
-## To open an issue: https://github.com/ethanniser/the-beth-stack
-## To discuss: https://discord.gg/Z3yUtMfkwa
+# Elysia with Bun runtime
 
-### To run locally:
+## Getting Started
+To get started with this template, simply paste this command into your terminal:
+```bash
+bun create elysia ./elysia-example
+```
 
-1. `bun install`
-2. create a new turso database with `turso db create <name>`
-3. get the database url with `turso db show --url <name>`
-4. get the auth token with `turso db tokens create <name>`
-5. (optional) create a new github developer app and get credentials
-6. copy `.env.example` to `.env`
-7. fill out all enviorment variables (refer to the config file to see schema)
-8. `bun db:push`
-9. `bun dev`
+## Development
+To start the development server run:
+```bash
+bun run dev
+```
 
-### To deploy to fly.io
-
-1. Install the [Fly CLI](https://fly.io/docs/hands-on/install-flyctl/)
-
-2. Run `fly launch`
-
-3. Run `fly secrets set <NAME>=<VALUE>` (probably want to set `NODE_ENV` to `"production"`)
-
-5. Run `fly deploy`
+Open http://localhost:3000/ with your browser to see the result.
