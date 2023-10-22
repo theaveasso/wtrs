@@ -1,32 +1,14 @@
-import { staticPlugin } from "@elysiajs/static";
-// import { swagger } from "@elysiajs/swagger";
-import { Elysia } from "elysia";
-import { config } from "./config";
-// import { ctx } from "./context";
-import { api } from "./controllers/*";
-import { pages } from "./pages/*";
+import { buildServer } from "./utils/server";
+import { logger } from "./utils/logger";
+import { config } from "./env";
 
-const app = new Elysia()
-  // .use(swagger())
-  // @ts-expect-error
-  .use(staticPlugin())
-  .use(api)
-  .use(pages)
-  .onStart(({ log }) => {
-    if (config.env.NODE_ENV === "development") {
-      void fetch("http://localhost:3001/restart");
-      // log.debug("🦊 Triggering Live Reload");
-      console.log("🦊 Triggering Live Reload");
-    }
-  })
-  .onError(({ code, error, request, log }) => {
-    log.error(` ${request.method} ${request.url}`, code, error);
-    console.error(error);
-  })
-  .listen(3000);
+async function main() {
+  const app = await buildServer()
 
-export type App = typeof app;
+  app.listen(config.env.PORT);
+  logger.info(
+    `app is listening on ${config.env.HOST}:${config.env.PORT}`,
+  );
+}
 
-console.log(
-  `app is listening on http://${app.server?.hostname}:${app.server?.port}`,
-);
+main()

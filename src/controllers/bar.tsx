@@ -11,20 +11,27 @@ export function getRoot() {
         crossorigin="anonymous"
       ></script>
       <head>
-        <title>My Simple HTML5 Page</title>
+        <title>Who is the real senior?</title>
       </head>
       <body>
         <h1>Welcome to My Simple HTML5 Page</h1>
         <p>This is a basic HTML5 document.</p>
-        <button hx-post="/clicked" hx-swap="outerHtml">
-          Click me!
-        </button>
+        <section
+          hx-get="/api/v1/feeds"
+          hx-swap="outerHtml"
+          hx-trigger="load"
+        ></section>
+        <section
+          hx-get="/api/v1/organizations"
+          hx-swap="outerHtml"
+          hx-trigger="load"
+        ></section>
       </body>
     </html>
   );
 }
 
-export function poopForm() {}
+export function poopForm() { }
 
 // export function click() {
 //   throw "Fuck off";
