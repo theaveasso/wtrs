@@ -1,13 +1,21 @@
-# Elysia with Bun runtime
+# Elysia - Htmx - Drizzle - Lucia with Bun runtime
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+## Todo
+
+- [x] Setup environment (Elysia, Drizzle, Lucia)
+- [ ] Email password authentication
+- [ ] New user and Old user page
+- [ ] Join Create Organization
+- [ ] Create Update Gists
+- [ ] Upvote Downvote Gists
+- [ ] Bookmarks
+- [ ] Internal Ranking
+- [ ] Browser Organization
 
 ## Development
+
 To start the development server run:
+
 ```bash
 bun run dev
 ```
