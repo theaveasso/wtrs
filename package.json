@@ -3,15 +3,28 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --hot src/main.ts",
+    "db:generate": "drizzle-kit generate:sqlite",
+    "db:push": "drizzle-kit push:sqlite"
   },
   "dependencies": {
     "@elysiajs/html": "^0.7.3",
-    "@elysiajs/swagger": "^0.7.3",
-    "elysia": "latest"
+    "@libsql/client": "^0.3.6",
+    "@t3-oss/env-core": "^0.7.1",
+    "drizzle-orm": "^0.28.6",
+    "drizzle-zod": "^0.5.1",
+    "elysia": "latest",
+    "pino-pretty": "^10.2.3",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@happy-dom/global-registrator": "^12.9.1",
+    "better-sqlite3": "^9.0.0",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.19.13",
+    "pino": "^8.16.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
   },
   "module": "src/index.js"
 }

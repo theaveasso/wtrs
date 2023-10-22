@@ -1,15 +1,14 @@
-# Elysia with Bun runtime
+# Who is the senior?
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+- [ ] Fetch all code block issue
+- [ ] Team memeber create a solve code issue or snippet or code block?
+- [ ] List out the team member ({name, role(position), votes, rank})
+- [ ] Solo user can join a team
+- [ ] A job market search
+- [ ] Team member able to upvote
+- [ ] Team member able to downvote
 
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
-
-Open http://localhost:3000/ with your browser to see the result.
+### Interesting topic
+- Collaborative Code Review: (some sort of gist and multi user editing on it)
+    Design a platform that simplifies and streamlines the code review process, allowing developers to 
+    collaboratively review and comment on code changes.
